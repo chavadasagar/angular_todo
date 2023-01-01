@@ -32,6 +32,8 @@ export class AddtodoComponent implements OnInit {
       all = [];
     }
 
+    temptodo.id = all.length + 1;
+
     all.push(temptodo);
     localStorage.setItem("alltodo",JSON.stringify(all));
   }

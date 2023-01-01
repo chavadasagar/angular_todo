@@ -26,6 +26,12 @@ export class AlltodoComponent implements OnInit {
     // this.alltodo = this.alltodo.filter((x: any) => x.no != todo.no)
     let index = this.alltodo.indexOf(todo);
     this.alltodo.splice(index, 1);
+    let all = Array.from(JSON.parse(localStorage.getItem("alltodo")!));
+
+    
+    all.splice(all.indexOf(todo),1);
+
+    localStorage.setItem("alltodo",JSON.stringify(all));
 
   }
 }
