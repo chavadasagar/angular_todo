@@ -1,0 +1,13 @@
+<div class="container" >
+    <form class="mt-4"  #todoform="ngForm" (ngSubmit)="addtodo(todoform)">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Todo</label>
+          <input type="text" class="form-control" name="todoname" ngModel placeholder="Enter Todo Name" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Descrption</label>
+          <input type="text" class="form-control" name="descrption" ngModel placeholder="Descrption">
+        </div>
+        <button type="submit" class="btn btn-primary">Add Todo</button>
+      </form>
+</div>

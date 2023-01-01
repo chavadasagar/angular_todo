@@ -1,0 +1,8 @@
+<div class="container">
+    <h1>All Todos</h1>
+    <div class="row">
+        <div class="col-md-4 g-2" *ngFor="let todo of alltodo">
+          <app-todo [todo]="todo" (todoDelete)="deletetodo($event)"></app-todo>
+        </div>
+    </div>
+</div>
