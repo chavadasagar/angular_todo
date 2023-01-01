@@ -8,22 +8,22 @@ import { Todo } from '../todo';
 })
 export class AddtodoComponent implements OnInit {
 
-  @Output() addnewtodo:EventEmitter<Todo> =new EventEmitter();
+  @Output() addnewtodo: EventEmitter<Todo> = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  addtodo(todo:any) {
+  addtodo(todo: any) {
 
-    debugger
 
     let temptodo = new Todo();
     temptodo.name = todo.value.todoname
     temptodo.descrption = todo.value.descrption;
     temptodo.isactive = true;
-    
-    localStorage.setItem("todo",JSON.stringify(temptodo)); 
+
+    localStorage.setItem("todo", JSON.stringify(temptodo));
+
   }
 
 }

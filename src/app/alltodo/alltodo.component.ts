@@ -1,5 +1,5 @@
 import { JsonPipe } from '@angular/common';
-import { Component, OnInit , Input} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Todo } from '../todo';
 
 @Component({
@@ -8,56 +8,49 @@ import { Todo } from '../todo';
   styleUrls: ['./alltodo.component.css']
 })
 export class AlltodoComponent implements OnInit {
-  todoitem!:any
+  todoitem!: string
   alltodo!: Todo[];
   constructor() {
 
     debugger
 
-      if(localStorage.getItem("todo") == undefined)
-      {
-        this.alltodo = [];
-      }
-      else{
-        this.todoitem = localStorage.getItem("todo");
-        this.alltodo.push(JSON.parse(this.todoitem));
-      }
+    this.todoitem = JSON.stringify(localStorage.getItem("todo")); 
+    if(this.todoitem == null)
+    {
+      this.alltodo = [];
+    }
+    else{
+      this.alltodo.push(JSON.parse(JSON.parse(this.todoitem)) as Todo);
+    }
 
-    // this.alltodo = [
-    //   {
-    //     name:"new",
-    //     descrption:"it is simple todo",
-    //     isactive:true,
-    //     no:1
-    //   },
-    //   {
-    //     name:"working",
-    //     descrption:"it is simple todo",
-    //     isactive:true,
-    //     no:10
-    //   },
-    //   {
-    //     name:"lunch",
-    //     descrption:"it is simple todo",
-    //     isactive:true,
-    //     no:12
-    //   }
-    // ]
-   }
+
+
+
+    this.alltodo = [
+      {
+        name:"new",
+        descrption:"it is simple todo",
+        isactive:true,
+      },
+      {
+        name:"working",
+        descrption:"it is simple todo",
+        isactive:true,
+      },
+      {
+        name:"lunch",
+        descrption:"it is simple todo",
+        isactive:true,
+      }
+    ]
+  }
 
   ngOnInit(): void {
   }
 
-  deletetodo(todo:Todo){
-    debugger
+  deletetodo(todo: Todo) {
     // this.alltodo = this.alltodo.filter((x: any) => x.no != todo.no)
     let index = this.alltodo.indexOf(todo);
-    this.alltodo.splice(index);
+    this.alltodo.splice(index,1);
   }
-
- 
-  
-
-  
-
 }
