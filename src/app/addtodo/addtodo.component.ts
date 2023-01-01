@@ -16,14 +16,24 @@ export class AddtodoComponent implements OnInit {
 
   addtodo(todo: any) {
 
-
+    debugger
     let temptodo = new Todo();
     temptodo.name = todo.value.todoname
     temptodo.descrption = todo.value.descrption;
     temptodo.isactive = true;
 
-    localStorage.setItem("todo", JSON.stringify(temptodo));
+    let all:any
 
+    if(localStorage.getItem("alltodo") != undefined)
+    {
+      all = JSON.parse(localStorage.getItem("alltodo")!);
+    }
+    else{
+      all = [];
+    }
+
+    all.push(temptodo);
+    localStorage.setItem("alltodo",JSON.stringify(all));
   }
 
 }

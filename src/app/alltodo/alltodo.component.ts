@@ -1,5 +1,6 @@
 import { JsonPipe } from '@angular/common';
 import { Component, OnInit, Input } from '@angular/core';
+import { TitleStrategy } from '@angular/router';
 import { Todo } from '../todo';
 
 @Component({
@@ -9,41 +10,13 @@ import { Todo } from '../todo';
 })
 export class AlltodoComponent implements OnInit {
   todoitem!: string
-  alltodo!: Todo[];
+  alltodo!: any
   constructor() {
 
-    debugger
-
-    this.todoitem = JSON.stringify(localStorage.getItem("todo")); 
-    if(this.todoitem == null)
+    if(localStorage.getItem("alltodo") != undefined)
     {
-      this.alltodo = [];
+     this.alltodo =   JSON.parse(localStorage.getItem("alltodo")!);
     }
-    else{
-      
-      this.alltodo.push(JSON.parse(JSON.parse(this.todoitem)) as Todo);
-    }
-
-
-
-
-    this.alltodo = [
-      {
-        name:"new",
-        descrption:"it is simple todo",
-        isactive:true,
-      },
-      {
-        name:"working",
-        descrption:"it is simple todo",
-        isactive:true,
-      },
-      {
-        name:"lunch",
-        descrption:"it is simple todo",
-        isactive:true,
-      }
-    ]
   }
 
   ngOnInit(): void {
@@ -52,6 +25,7 @@ export class AlltodoComponent implements OnInit {
   deletetodo(todo: Todo) {
     // this.alltodo = this.alltodo.filter((x: any) => x.no != todo.no)
     let index = this.alltodo.indexOf(todo);
-    this.alltodo.splice(index,1);
+    this.alltodo.splice(index, 1);
+
   }
 }
