@@ -20,6 +20,7 @@ export class AlltodoComponent implements OnInit {
       this.alltodo = [];
     }
     else{
+      
       this.alltodo.push(JSON.parse(JSON.parse(this.todoitem)) as Todo);
     }
 
